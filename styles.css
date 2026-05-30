@@ -23,11 +23,16 @@ html {
     scroll-behavior: smooth;
 }
 
+html {
+    min-width: 0;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--dark-gray);
     background: var(--white);
     overflow-x: hidden;
+    min-width: 0;
     opacity: 0;
     transition: opacity 0.35s ease;
 }
@@ -61,11 +66,12 @@ a {
         }
 
         .navbar-container {
-            max-width: 1400px;
+            max-width: 1080px;
             margin: 0 auto;
+            padding: 0 1.25rem;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
 
@@ -80,10 +86,17 @@ a {
 
         .logo img {
             width: auto;
-            max-width: 250px;
-            max-height: 150px;
+            max-width: 190px;
+            max-height: 85px;
             object-fit: contain;
             border-radius: 8px;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .logo-text {
@@ -147,18 +160,18 @@ a {
         }
 
         .btn-contact-nav {
-            margin-left: 1.5rem;
+            margin-left: 0.9rem;
             background: var(--accent-yellow);
             color: var(--dark-gray);
-            padding: 0.7rem 1.5rem;
+            padding: 0.55rem 1rem;
             border: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: var(--transition);
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 3px 10px rgba(37, 99, 235, 0.18);
         }
 
         .btn-contact-nav:hover {
@@ -185,32 +198,49 @@ a {
         margin-left: auto;
     }
 
+    .navbar-container {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .btn-contact-nav {
+        width: 100%;
+        max-width: 220px;
+        margin-left: 0;
+    }
+
     .nav-links {
         position: absolute;
-        top: 64px;
-        right: 1.2rem;
-        background: rgba(255,255,255,0.98);
+        top: 72px;
+        left: 1rem;
+        right: 1rem;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
         flex-direction: column;
-        padding: 0.8rem 1rem;
-        gap: 0.6rem;
-        border-radius: 10px;
-        transform-origin: top right;
-        transform: translateY(-8px) scaleY(0.98);
+        align-items: stretch;
+        background: rgba(255,255,255,0.98);
+        padding: 1rem 1rem;
+        gap: 0.75rem;
+        border-radius: 18px;
+        transform: translateY(-10px) scale(0.98);
         opacity: 0;
         pointer-events: none;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.14);
     }
 
     .nav-links.active {
-        transform: translateY(0) scaleY(1);
+        transform: translateY(0) scale(1);
         opacity: 1;
         pointer-events: auto;
     }
 
     .nav-links a {
-        padding: 0.6rem 1rem;
+        padding: 0.9rem 1rem;
         display: block;
+        width: 100%;
         color: var(--dark-gray);
+        border-radius: 14px;
     }
 }
 
@@ -221,11 +251,11 @@ a {
     background-image: url("src/BG IMAGE.jpg"), radial-gradient(circle at top left, rgba(132, 39, 232, 0.14), transparent 108%), linear-gradient(135deg, #4b5ff5 0%, #4f5af9 45%, #4c47ee 100%);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     position: relative;
     overflow: hidden;
-    min-height: calc(92vh - 80px);
-    padding: 5.5rem 0;
+    min-height: calc(75vh - 80px);
+    padding: 3rem 0 2rem;
     display: flex;
     align-items: center;
     color: var(--white);
@@ -238,7 +268,6 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 0.25;
@@ -248,13 +277,13 @@ a {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 1220px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.25rem;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
+    gap: 2rem;
     align-items: center;
 }
 
@@ -263,12 +292,12 @@ a {
     margin-top: 80px;
     background-image: url("src/BG IMAGE.jpg");
     background-size: cover;
-    background-position: center center;
+    background-position: center top;
     background-attachment: scroll;
     position: relative;
     overflow: hidden;
-    min-height: calc(100vh - 80px);
-    padding: 5rem 0 4rem;
+    min-height: calc(82vh - 80px);
+    padding: 4rem 0 3rem;
     display: flex;
     align-items: center;
     color: var(--white);
@@ -289,15 +318,25 @@ a {
 .services-hero .services-hero-content {
     position: relative;
     z-index: 2;
-    max-width: 1200px;
+    max-width: 1040px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.05fr 0.95fr;
+    grid-template-areas: "card text";
+    gap: 2rem;
     align-items: center;
     text-align: left;
+}
+
+.services-hero .hero-right {
+    grid-area: card;
+    justify-self: flex-start;
+}
+
+.services-hero .hero-left {
+    grid-area: text;
 }
 
 .hero-left {
@@ -309,13 +348,13 @@ a {
 }
 
 .hero-left h1 {
-    font-size: clamp(3rem, 5vw, 4.8rem);
+    font-size: clamp(3rem, 5vw, 4.4rem);
     font-weight: 800;
     line-height: 1.05;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
     animation: fadeInUp 0.8s ease-out;
-    letter-spacing: -1.4px;
-    max-width: 760px;
+    letter-spacing: -1.2px;
+    max-width: 680px;
 }
 
 .hero-left p {
@@ -404,6 +443,19 @@ a {
     height: auto;
     border-radius: 28px;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    animation: fadeInUp 0.9s ease both;
+}
+
+.hero.about-hero .hero-right .hero-image {
+    clip-path: none;
+    object-fit: contain;
+    object-position: center top;
+    filter: brightness(0.95);
+}
+
+.contact-hero .hero-content {
+    gap: 2rem;
+    text-align: center;
 }
 
 .floating-card {
@@ -415,15 +467,7 @@ a {
     width: 100%;
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
     border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.floating-card h3 {
-    margin-bottom: 1.5rem;
-    color: var(--dark-gray);
-    font-weight: 800;
-    text-align: center;
-    letter-spacing: -0.4px;
-    font-size: 1.3rem;
+    animation: fadeInUp 0.9s ease both;
 }
 
 .floating-card p {
@@ -504,9 +548,21 @@ a {
         text-align: center;
     }
 
+    .about-hero .hero-content {
+        justify-items: center;
+    }
+
     .hero-left {
         align-items: center;
         margin: 0 auto;
+    }
+
+    .about-hero .hero-left {
+        text-align: center;
+    }
+
+    .about-hero .hero-right {
+        order: -1;
     }
 
     .hero-left h1 {
@@ -531,6 +587,17 @@ a {
         max-width: 100%;
     }
 
+    .contact-hero .hero-right {
+        min-height: 220px;
+    }
+
+    .contact-hero .hero-right .hero-image {
+        width: auto;
+        max-width: 200px;
+        height: 200px;
+        object-fit: contain;
+    }
+
     .info-cards {
         grid-template-columns: 1fr;
         margin-top: 1.2rem;
@@ -544,7 +611,7 @@ a {
 .about-page,
 .services,
 .contact-page {
-    padding: 6rem 2rem;
+    padding: 4rem 1.5rem;
     background: var(--white);
 }
 
@@ -877,26 +944,34 @@ a {
     color: var(--medium-gray);
 }
 
-.services-hero,
-.about-hero {
+.services-hero {
     margin-top: 80px;
-    background-image: linear-gradient(135deg, rgba(227, 226, 236, 0.85) 0%, rgba(59, 130, 246, 0.85) 50%, rgba(241, 247, 250, 0.85) 100%), url("src/BG IMAGE.jpg");
+    background-image: url("src/BG IMAGE.jpg"), radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 28%), linear-gradient(135deg, #1F2A82 0%, #323DDB 45%, #0E79D3 100%);
     background-size: cover;
     background-position: center center;
     background-attachment: scroll;
-    padding: 6rem 2rem;
-    color: var(--white);
-    text-align: center;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
     overflow: hidden;
+    min-height: calc(90vh - 80px);
+    padding: 4rem 1.5rem 3rem;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    text-align: left;
 }
 
-.services-hero::before,
+.services-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+    opacity: 0.2;
+    z-index: 0;
+}
+
 .about-hero::before {
     content: '';
     position: absolute;
@@ -904,7 +979,7 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="BG IMAGE.jpg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
     opacity: 0.3;
     z-index: 0;
 }
@@ -928,9 +1003,25 @@ a {
 }
 
 .services-container,
-.about-page {
-    max-width: 1400px;
+.about-page,
+.contact-page {
+    max-width: 1100px;
     margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.contact-hero .hero-content {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1024px) {
+    .contact-hero .hero-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-hero .hero-right {
+        order: -1;
+    }
 }
 
 .service-card {
@@ -1075,6 +1166,9 @@ a {
     margin-bottom: 1rem;
     font-weight: 600;
     color: var(--dark-gray);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
 }
 
 .about-points i {
@@ -1093,14 +1187,14 @@ a {
 }
 
 .about-page {
-    padding: 4rem 2rem 6rem;
+    padding: 2.5rem 1.5rem 3.5rem;
     background: var(--soft-white);
 }
 
 .page-intro {
     text-align: center;
     max-width: 780px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
 }
 
 .about-description {
@@ -1111,8 +1205,8 @@ a {
 
 .about-frame {
     max-width: 1200px;
-    margin: 0 auto 3rem;
-    padding: 2rem;
+    margin: 0 auto 2rem;
+    padding: 1.5rem;
     background: var(--white);
     border-radius: 32px;
     border: 1px solid rgba(148, 163, 184, 0.18);
@@ -1185,6 +1279,9 @@ a {
     gap: 0.9rem;
     font-weight: 600;
     color: var(--dark-gray);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    min-width: 0;
 }
 
 .about-points i {
@@ -1195,8 +1292,8 @@ a {
 
 .work-panel {
     max-width: 1200px;
-    margin: 0 auto 3rem;
-    padding: 3rem;
+    margin: 0 auto 2rem;
+    padding: 2rem;
     background: var(--white);
     border-radius: 32px;
     border: 1px solid rgba(148, 163, 184, 0.16);
@@ -1210,14 +1307,14 @@ a {
 .how-we-work-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 .work-card {
     background: var(--soft-white);
     border-radius: 24px;
-    padding: 2rem;
+    padding: 1.4rem;
     border: 1px solid rgba(148, 163, 184, 0.12);
     display: flex;
     flex-direction: column;
@@ -1250,19 +1347,19 @@ a {
 
 .stats-section {
     max-width: 1200px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(220px, 1fr));
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .stat-card {
     background: var(--white);
     border-radius: 24px;
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     border: 1px solid rgba(148, 163, 184, 0.12);
     box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
@@ -1283,7 +1380,7 @@ a {
 
 .testimonials-section {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
 }
 
 .section-intro.centered {
@@ -1294,13 +1391,13 @@ a {
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(260px, 1fr));
-    gap: 1.75rem;
+    gap: 1.3rem;
 }
 
 .testimonial-card {
     background: var(--white);
     border-radius: 24px;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 1px solid rgba(148, 163, 184, 0.12);
     box-shadow: 0 18px 50px rgba(15, 23, 42, 0.05);
 }
@@ -1352,24 +1449,24 @@ a {
 
 @media (max-width: 700px) {
     .about-page {
-        padding: 3rem 1.5rem 4rem;
+        padding: 2rem 1rem 2.5rem;
     }
 
     .about-frame,
     .work-panel {
-        padding: 1.75rem;
+        padding: 1.25rem;
     }
 
     .about-card-text {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .page-intro {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     .section-title {
-        font-size: 2.2rem;
+        font-size: 1.7rem;
     }
 }
 
@@ -2133,24 +2230,31 @@ a {
 }
 
 @media (max-width: 568px) {
+    html {
+        font-size: 12px;
+    }
+
     .hero-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.2rem;
     }
 
     .hero-left h1 {
-        font-size: 2rem;
+        font-size: 1.4rem;
+        margin-bottom: 0.6rem;
     }
 
     .hero-left p {
-        font-size: 0.95rem;
+        font-size: 0.8rem;
+        margin-bottom: 0.6rem;
     }
 
     .info-cards {
         position: static;
         grid-template-columns: 1fr;
         max-width: 100%;
-        margin-top: 2rem;
+        margin-top: 1rem;
+        gap: 0.5rem;
     }
 
     .founders-container,
@@ -2178,6 +2282,120 @@ a {
         gap: 2rem;
     }
 
+    .about-card-text {
+        width: 100%;
+        overflow-x: hidden;
+        padding: 0 0.3rem;
+    }
+
+    .about-card-text h3 {
+        font-size: 1.15rem;
+        word-break: break-word;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-card-text p {
+        font-size: 0.85rem;
+        word-break: break-word;
+    }
+
+    .about-points {
+        gap: 0.6rem;
+        margin: 0.8rem 0 0;
+    }
+
+    .about-points li {
+        gap: 0.6rem;
+        font-size: 0.85rem;
+        margin-bottom: 0.6rem;
+        min-width: 0;
+        flex-wrap: wrap;
+    }
+
+    .about-points i {
+        flex-shrink: 0;
+        font-size: 0.85rem;
+        margin-top: 0.1rem;
+    }
+}
+
+@media (max-width: 420px) and (max-height: 915px) {
+    html { font-size: 11px; }
+    body { overflow-x: hidden; min-width: 0; }
+
+    .navbar-container { padding: 0.35rem 0.5rem; gap: 0.4rem; }
+    .logo img { max-width: 100px; }
+
+    .hero { padding: 1rem 0.5rem; margin-top: 56px; }
+    .hero-content { grid-template-columns: 1fr; gap: 0.6rem; padding: 0 0.35rem; }
+    .hero-left h1 { font-size: 1.15rem; line-height: 1.05; margin-bottom: 0.45rem; }
+    .hero-left p { font-size: 0.78rem; margin-bottom: 0.45rem; }
+    .hero-buttons a { display: block; width: 100%; margin-bottom: 0.45rem; }
+
+    .about-card-image img,
+    .hero-image,
+    .about-card img { max-width: 100%; height: auto; display: block; object-fit: cover; border-radius: 12px; }
+
+    .about-card { padding: 0.8rem; border-radius: 16px; }
+    .about-card-text { padding: 0 0.25rem; overflow-x: hidden; }
+    .about-card-text h3 { font-size: 1.05rem; }
+    .about-card-text p { font-size: 0.78rem; }
+
+    .how-we-work-grid,
+    .testimonials-grid,
+    .stats-grid,
+    .info-cards { grid-template-columns: 1fr; gap: 0.6rem; }
+
+    .work-card { min-height: auto; padding: 1rem; }
+
+    .about-points { gap: 0.5rem; }
+    .about-points li { gap: 0.5rem; font-size: 0.8rem; margin-bottom: 0.5rem; }
+
+    .btn-learn-more, .btn-contact-me, .btn-send { font-size: 0.82rem; padding: 0.55rem 0.6rem; width: 100%; }
+}
+
+@media (max-width: 412px) {
+    html { font-size: 10.5px; }
+    .navbar { padding: 0.45rem 0.5rem; }
+    .navbar-container { padding: 0 0.5rem; }
+    .nav-links { left: 0.3rem; right: 0.3rem; top: 48px; }
+
+    .hero { padding: 0.8rem 0.4rem; }
+    .hero-content { gap: 0.45rem; padding: 0 0.3rem; }
+    .hero-left h1 { font-size: 1rem; }
+    .hero-left p { font-size: 0.74rem; }
+
+    .about-page { padding: 1.2rem 0.5rem; }
+    .page-intro .about-description, .about-card-text p { font-size: 0.74rem; line-height: 1.5; }
+    .about-card-text h3 { font-size: 1rem; }
+
+    .about-card { padding: 0.6rem; }
+    .about-card-image img, .about-card img { border-radius: 10px; }
+
+    .how-we-work-grid, .testimonials-grid, .stats-grid { gap: 0.5rem; }
+    .work-card { padding: 0.85rem; }
+
+    .section-title { font-size: 1.15rem; }
+    .section-subtitle { font-size: 0.65rem; }
+
+    footer .footer-container { padding: 1rem 0.6rem; }
+}
+
+@media (max-width: 420px) {
+    /* Strong clamp to prevent any horizontal overflow */
+    html, body { max-width: 100vw; overflow-x: hidden !important; }
+    .navbar-container, .hero-content, .about-page, .about-frame, .about-section-content, .footer-container {
+        max-width: 100vw !important; width: 100% !important; padding-left: 0.5rem !important; padding-right: 0.5rem !important; box-sizing: border-box !important;
+    }
+    .navbar-container { margin: 0 auto; }
+    .about-section-content { grid-template-columns: 1fr !important; gap: 0.4rem !important; }
+    .hero-image, .about-card-image img, .about-card img { max-width: 100% !important; height: auto !important; max-height: 200px !important; }
+    .section-title { font-size: 1.05rem !important; }
+    .section-subtitle { font-size: 0.65rem !important; }
+    .page-intro, .about-frame { margin: 0 auto 0.6rem !important; padding: 0.6rem 0 !important; }
+    .btn-learn-more, .btn-contact-me, .btn-send { padding: 0.5rem 0.6rem !important; font-size: 0.78rem !important; }
+}
+
     .features-list {
         flex-direction: column;
         gap: 1.5rem;
@@ -2189,6 +2407,85 @@ a {
     }
 }
 
+/* Final strict clamps for very narrow phones to eliminate horizontal scrolling */
+ @media (max-width: 420px) {
+            html { font-size: 10.5px; }
+            body, html { max-width: 100vw; overflow-x: hidden; }
+
+            .navbar, .navbar-container { padding: 0.45rem 0.6rem; }
+            .navbar-container { gap: 0.4rem; }
+            .logo img { max-width: 19rem; max-height: 10rem; }
+
+            .mobile-menu-toggle { display: block; font-size: 1.3rem; }
+
+            .btn-contact-nav {
+                display: inline-flex;
+                width: auto;
+                margin-left: 0;
+                padding: 0.5rem 0.9rem;
+                font-size: 0.8rem;
+            }
+
+        .footer-container, .hero-content, .about-frame, .about-page {
+        max-width: 100vw !important;
+        width: 100% !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .nav-links { 
+        left: 0.4rem ;
+        right: 0.4rem ; }
+    .navbar-container { gap: 0.3rem ; }
+
+    .btn-learn-more, .btn-contact-me, .btn-send {
+        max-width: calc(100% - 1rem) ;
+        width: auto ;
+        white-space: normal ;
+        padding-left: 0.6rem ;
+        padding-right: 0.6rem ;
+        box-sizing: border-box ;
+    }
+
+    .hero-left h1, .section-title, .page-intro .section-title {
+        max-width: 100% !important;
+        font-size: clamp(0.95rem, 5.5vw, 1.15rem) !important;
+        line-height: 1.05 !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+    }
+
+    .hero-left p, .about-card-text p, .page-intro .about-description {
+        font-size: clamp(0.72rem, 3.5vw, 0.9rem) !important;
+        line-height: 1.45 !important;
+    }
+
+    .about-points li { min-width: 0 ; }
+
+    .hero-image, .about-card-image img, .about-card img {
+        max-width: 100% ;
+        height: auto ;
+        object-fit: cover ;
+        display: block ;
+        margin-inline: 0 ;
+        max-height: 220px ;
+    }
+
+    /* remove any large overflowing shadows that can add horizontal growth */
+    .work-panel, .about-frame, .stat-card, .testimonial-card { box-shadow: none !important; }
+
+    .hero { margin-top: 96px ; }
+}
+
+/* Show contact button on screens larger than 420px */
+@media (min-width: 421px) {
+    .btn-contact-nav {
+        display: block ;
+    }
+}
+
 @media (max-width: 1024px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
@@ -2196,5 +2493,407 @@ a {
 
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .navbar-container {
+        gap: 0.6rem;
+    }
+
+    .btn-contact-nav {
+        margin-left: 0;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.75rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 52px;
+        left: 0.5rem;
+        right: 0.5rem;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 0.7rem 0.8rem;
+        gap: 0.5rem;
+        border-radius: 12px;
+        transform: translateY(-10px) scale(0.98);
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+        transition: transform 0.28s ease, opacity 0.28s ease;
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+    }
+
+    .hero,
+    .services-hero,
+    .about-hero {
+        min-height: auto;
+        padding: 4rem 1.5rem;
+        background-attachment: scroll;
+    }
+
+    .hero-content,
+    .services-hero-content,
+    .about-hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0;
+    }
+
+    .hero-left,
+    .hero-right,
+    .about-section-image,
+    .about-section-text,
+    .contact-box,
+    .pricing-card,
+    .service-card {
+        width: 100%;
+    }
+
+    .hero-left h1,
+    .services-hero h1,
+    .about-hero h1 {
+        font-size: clamp(2.2rem, 6vw, 3.4rem);
+    }
+
+    .hero-left p,
+    .services-hero p,
+    .about-hero p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .hero-buttons,
+    .info-cards,
+    .pricing-grid,
+    .portfolio-grid,
+    .testimonials-grid,
+    .stats-grid,
+    .how-we-work-grid,
+    .contact-container,
+    .about-section-content,
+    .founders-container,
+    .why-choose-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-contact-nav,
+    .btn-learn-more,
+    .btn-contact-me,
+    .btn-send {
+        width: 100%;
+        max-width: 100%;
+        padding: 0.95rem 1.2rem;
+    }
+
+    .floating-card,
+    .service-card,
+    .about-card,
+    .pricing-card {
+        width: 100%;
+    }
+
+    .hero-image,
+    .portfolio-image img,
+    .about-card-image img,
+    .about-section-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .contact-page {
+        padding: 4rem 1.2rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+        padding: 0.95rem 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .navbar {
+        padding: 0.75rem 0.9rem;
+    }
+
+    .navbar-container {
+        gap: 0.8rem;
+    }
+
+    .logo img {
+        max-height: 120px;
+    }
+
+    .hero,
+    .services-hero,
+    .about-hero {
+        padding: 3rem 1rem;
+    }
+
+    .hero-left h1,
+    .services-hero h1,
+    .about-hero h1 {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+    }
+
+    .hero-left p,
+    .services-hero p,
+    .about-hero p {
+        font-size: 0.96rem;
+    }
+
+    .hero-buttons,
+    .hero-right {
+        gap: 0.85rem;
+    }
+
+    .hero-right {
+        justify-content: center;
+    }
+
+    .floating-card,
+    .service-card,
+    .about-card,
+    .pricing-card,
+    .contact-box {
+        padding: 1.4rem;
+    }
+
+    .section-title {
+        font-size: 1.9rem;
+    }
+
+    .footer {
+        padding: 3rem 1rem 2rem;
+    }
+
+    .contact-page {
+        padding: 3rem 1rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.9rem 0.95rem;
+    }
+
+    .btn-contact-nav,
+    .btn-learn-more,
+    .btn-contact-me,
+    .btn-send {
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .nav-links {
+        top: 66px;
+        left: 0.75rem;
+        right: 0.75rem;
+        padding: 0.85rem 1rem;
+    }
+}
+
+/* Final mobile scaling override */
+@media (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+
+    body {
+        min-width: 0;
+    }
+
+    .navbar {
+        padding: 0.5rem 0.5rem;
+    }
+
+    .navbar-container {
+        gap: 0.5rem;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+
+    .logo img {
+        max-width: 110px;
+        max-height: 45px;
+    }
+
+    .btn-contact-nav {
+        width: auto;
+        max-width: 140px;
+        margin: 0;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.75rem;
+    }
+
+    .hero {
+        padding: 1.5rem 0.65rem 1rem;
+        min-height: auto;
+        background-attachment: scroll;
+        margin-top: 60px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 0.65rem;
+        padding: 0 0.5rem;
+        width: min(100%, 100vw);
+        max-width: 100vw;
+    }
+
+    .hero-left h1,
+    .services-hero h1,
+    .about-hero h1 {
+        font-size: clamp(1.3rem, 7vw, 1.7rem);
+        line-height: 1.1;
+        letter-spacing: -0.3px;
+        max-width: 100%;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-left p,
+    .services-hero p,
+    .about-hero p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.5rem, 7vw, 1.8rem);
+        margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.7rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .floating-card,
+    .service-card,
+    .about-card,
+    .pricing-card,
+    .contact-box {
+        padding: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-send,
+    .btn-learn-more,
+    .btn-contact-me {
+        width: 100%;
+        padding: 0.8rem 0.9rem;
+        font-size: 0.88rem;
+    }
+
+    .hero-buttons,
+    .info-cards,
+    .pricing-grid,
+    .portfolio-grid,
+    .testimonials-grid,
+    .stats-grid,
+    .how-we-work-grid,
+    .contact-container,
+    .about-section-content,
+    .founders-container,
+    .why-choose-container {
+        gap: 0.6rem;
+    }
+
+    .hero-right {
+        width: 100%;
+    }
+
+    .info-cards {
+        margin-top: 0.7rem;
+    }
+
+    .about,
+    .about-page,
+    .services,
+    .contact-page {
+        padding: 2rem 0.65rem;
+    }
+
+    .services-hero,
+    .about-hero {
+        padding: 1.5rem 0.65rem 1rem;
+    }
+
+    .about-card-text {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    .about-card-text h3 {
+        font-size: 1.3rem;
+        word-break: break-word;
+    }
+
+    .about-card-text p {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .about-points {
+        gap: 0.7rem;
+    }
+
+    .about-points li {
+        gap: 0.7rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .about-points i {
+        flex-shrink: 0;
+        font-size: 0.9rem;
     }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="MMKS Digital Marketing Agency helps Tamil Nadu businesses grow online with SEO, social media marketing, branding, website design, and local digital advertising.">
     <meta name="keywords" content="digital marketing, Tamil Nadu, SEO, social media marketing, branding, website design, local business marketing, MMKS agency">
     <title>MMKS Digital Marketing Agency - Professional Digital Marketing Services</title>
@@ -31,6 +31,8 @@
 
         html {
             scroll-behavior: smooth;
+            min-width: 0;
+            font-size: 16px;
         }
 
         body {
@@ -38,6 +40,7 @@
             color: var(--dark-gray);
             background: var(--white);
             overflow-x: hidden;
+            min-width: 0;
         }
 
         /* ===== NAVBAR ===== */
@@ -61,11 +64,12 @@
         }
 
         .navbar-container {
-            max-width: 1400px;
+            max-width: 1080px;
             margin: 0 auto;
+            padding: 0 1.25rem;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .logo {
@@ -83,6 +87,13 @@
             max-height:150px;
             object-fit: contain;
             border-radius: 8px;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .logo-text {
@@ -144,18 +155,18 @@
         }
 
         .btn-contact-nav {
-            margin-left: 1.5rem;
+            margin-left: 0.9rem;
             background: var(--accent-yellow);
             color: var(--dark-gray);
-            padding: 0.7rem 1.5rem;
+            padding: 0.55rem 1rem;
             border: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             cursor: pointer;
             transition: var(--transition);
             font-family: 'Poppins', sans-serif;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 3px 10px rgba(37, 99, 235, 0.18);
         }
 
         .btn-contact-nav:hover {
@@ -181,11 +192,11 @@
             background-image: url('src/BG%20IMAGE.jpg'), radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 28%), linear-gradient(135deg, #1F2A82 0%, #323DDB 45%, #0E79D3 100%);
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             position: relative;
             overflow: hidden;
-            min-height: calc(100vh - 80px);
-            padding: 5rem 0 4rem;
+            min-height: calc(72vh - 80px);
+            padding: 3rem 0 2rem;
             display: flex;
             align-items: center;
             color: var(--white);
@@ -206,14 +217,15 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1340px;
+            max-width: 1080px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.25rem;
             width: 100%;
             display: grid;
             grid-template-columns: 1.2fr 0.9fr;
-            gap: 10rem;
+            gap: 2rem;
             align-items: center;
+            max-width: 100%;
         }
 
         .hero-left h1 {
@@ -224,6 +236,8 @@
             animation: fadeInUp 0.8s ease-out;
             letter-spacing: -1.4px;
             max-width: 760px;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
 
         .hero-left p {
@@ -424,27 +438,124 @@
             }
         }
 
-        @media (max-width: 680px) {
+        @media (max-width: 900px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .navbar-container {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .btn-contact-nav {
+                width: 100%;
+                max-width: 220px;
+                margin-left: 0;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 1rem;
+                right: 1rem;
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+                flex-direction: column;
+                align-items: stretch;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1rem 1rem;
+                gap: 0.75rem;
+                border-radius: 18px;
+                transform: translateY(-10px) scale(0.98);
+                opacity: 0;
+                pointer-events: none;
+                box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+                transition: transform 0.28s ease, opacity 0.28s ease;
+                z-index: 1001;
+            }
+
+            .nav-links.active {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.9rem 1rem;
+                border-radius: 14px;
+            }
+
             .hero {
-                padding: 2rem 0 3rem;
+                padding: 4rem 1.5rem;
+                min-height: auto;
+                background-attachment: scroll;
             }
 
             .hero-content {
                 padding: 0 1rem;
-                gap: 1.5rem;
+                gap: 2rem;
             }
 
             .hero-left h1 {
-                font-size: 2.2rem;
+                font-size: clamp(2.2rem, 7vw, 3rem);
+                line-height: 1.06;
+                letter-spacing: -0.8px;
+                max-width: 100%;
+            }
+
+            .hero-left p {
+                font-size: 1rem;
                 margin-bottom: 1rem;
+                max-width: 100%;
+            }
+
+            .hero-right {
+                align-items: center;
+            }
+
+            .info-cards {
+                padding: 0;
+                grid-template-columns: 1fr;
+                gap: 0.9rem;
+                margin-top: 1rem;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-container {
+                gap: 0.8rem;
+            }
+
+            .logo img {
+                max-width: 170px;
+                max-height: 70px;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero-left h1 {
+                font-size: clamp(1.7rem, 10vw, 2.2rem);
+                margin-bottom: 0.9rem;
+                line-height: 1.08;
             }
 
             .hero-left p,
             .hero-left .hero-note {
                 font-size: 0.95rem;
                 margin-bottom: 0.8rem;
-                margin-top: 0.5rem;
-                line-height: 1.6;
+                margin-top: 0.4rem;
+                line-height: 1.75;
             }
 
             .floating-card {
@@ -456,11 +567,12 @@
             .form-group input,
             .form-group textarea {
                 padding: 0.8rem;
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .btn-send {
-                padding: 0.8rem 1rem;
+                width: 100%;
+                padding: 0.85rem 1rem;
                 font-size: 0.95rem;
             }
 
@@ -1150,106 +1262,244 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .mobile-menu-toggle {
                 display: block;
             }
 
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                flex-direction: column;
-                background: var(--white);
-                padding: 1.5rem 2rem;
+            .navbar-container {
                 gap: 1rem;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                display: flex;
+                position: absolute;
+                top: 72px;
+                left: 1rem;
+                right: 1rem;
+                max-height: calc(100vh - 110px);
+                overflow-y: auto;
+                flex-direction: column;
+                align-items: stretch;
+                background: rgba(255, 255, 255, 0.96);
+                padding: 1rem 1.25rem;
+                gap: 0.85rem;
+                border-radius: 18px;
+                transform: translateY(-10px) scale(0.98);
+                opacity: 0;
+                pointer-events: none;
+                box-shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+                transition: transform 0.28s ease, opacity 0.28s ease;
+                z-index: 1001;
             }
 
             .nav-links.active {
-                display: flex;
+                transform: translateY(0) scale(1);
+                opacity: 1;
+                pointer-events: auto;
             }
 
-            .hero-content {
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.9rem 0;
+                border-radius: 14px;
+            }
+
+            .hero,
+            .services-hero,
+            .about-hero {
+                min-height: auto;
+                padding: 4rem 1.5rem;
+                background-attachment: scroll;
+            }
+
+            .hero-content,
+            .services-hero-content,
+            .about-hero-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                padding: 0;
             }
 
-            .hero-left h1 {
-                font-size: 2rem;
+            .hero-left,
+            .hero-right,
+            .about-section-image,
+            .about-section-text,
+            .contact-box,
+            .pricing-card,
+            .service-card {
+                width: 100%;
             }
 
-            .hero-left p {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
+            .hero-left h1,
+            .services-hero h1,
+            .about-hero h1 {
+                font-size: clamp(2.2rem, 6vw, 3.4rem);
             }
 
-            .info-cards {
-                position: static;
-                grid-template-columns: 1fr;
-                max-width: 100%;
-                margin-top: 2rem;
+            .hero-left p,
+            .services-hero p,
+            .about-hero p {
+                font-size: 1rem;
+                line-height: 1.8;
+                margin-bottom: 1.2rem;
             }
 
+            .hero-buttons,
+            .info-cards,
+            .pricing-grid,
+            .portfolio-grid,
+            .testimonials-grid,
+            .stats-grid,
+            .how-we-work-grid,
+            .contact-container,
+            .about-section-content,
             .founders-container,
             .why-choose-container {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+                width: 100%;
             }
 
-            .portfolio-grid {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-contact-nav,
+            .btn-learn-more,
+            .btn-contact-me,
+            .btn-send {
+                width: 100%;
+                max-width: 100%;
+                padding: 0.95rem 1.2rem;
+            }
+
+            .floating-card,
+            .service-card,
+            .about-card,
+            .pricing-card,
+            .contact-box {
+                padding: 1.5rem;
+            }
+
+            .hero-image,
+            .portfolio-image img,
+            .about-card-image img,
+            .about-section-image img {
+                width: 100%;
+                height: auto;
+            }
+
+            .contact-page {
+                padding: 4rem 1.2rem;
+            }
+
+            .form-grid {
                 grid-template-columns: 1fr;
             }
 
-            .testimonials-grid {
+            .form-group input,
+            .form-group textarea {
+                font-size: 0.95rem;
+                padding: 0.95rem 1rem;
+            }
+
+            .footer-content {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .section-title {
                 font-size: 2rem;
             }
 
-            /* Improve CTA/button touch targets on mobile */
-            .btn-contact-nav, .btn-learn-more, .btn-view-more, .btn-send {
-                padding: 0.9rem 1.4rem;
-                font-size: 1rem;
-                border-radius: 14px;
-            }
-
-            /* Reduce vertical gaps between sections for mobile */
-            .about, .portfolio, .why-choose, .testimonials, .founders {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
-
-            .about-section-content {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .features-list {
-                flex-direction: column;
-                gap: 1.5rem;
-                align-items: flex-start;
+            .btn-contact-nav {
+                margin-left: 0;
             }
         }
 
-        @media (max-width: 1024px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 640px) {
+            .navbar {
+                padding: 0.75rem 0.9rem;
             }
 
-            .testimonials-grid {
-                grid-template-columns: repeat(2, 3fr);
+            .navbar-container {
+                gap: 0.8rem;
+            }
+
+            .logo img {
+                max-height: 120px;
+            }
+
+            .hero,
+            .services-hero,
+            .about-hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero-left h1,
+            .services-hero h1,
+            .about-hero h1 {
+                font-size: clamp(1.9rem, 9vw, 2.6rem);
+            }
+
+            .hero-left p,
+            .services-hero p,
+            .about-hero p {
+                font-size: 0.96rem;
+            }
+
+            .hero-buttons,
+            .hero-right {
+                gap: 0.85rem;
+            }
+
+            .hero-right {
+                justify-content: center;
+            }
+
+            .floating-card,
+            .service-card,
+            .about-card,
+            .pricing-card,
+            .contact-box {
+                padding: 1.4rem;
+            }
+
+            .section-title {
+                font-size: 1.9rem;
+            }
+
+            .footer {
+                padding: 3rem 1rem 2rem;
+            }
+
+            .contact-page {
+                padding: 3rem 1rem;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 0.9rem 0.95rem;
+            }
+
+            .btn-contact-nav,
+            .btn-learn-more,
+            .btn-contact-me,
+            .btn-send {
+                padding: 0.9rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .nav-links {
+                top: 66px;
+                left: 0.75rem;
+                right: 0.75rem;
+                padding: 0.85rem 1rem;
             }
         }
          /* UPCOMING EVENTS - PROFESSIONAL POSTER STYLE */
@@ -1394,6 +1644,40 @@
             box-shadow: 0 12px 32px rgba(30, 126, 52, 0.5);
         }
 
+        /* Small-phone clamps to prevent horizontal overflow (approx 412x915) */
+        @media (max-width: 420px) {
+            html { font-size: 10.5px; }
+            body, html { max-width: 100vw; overflow-x: hidden; }
+
+            .navbar, .navbar-container { padding: 0.45rem 0.6rem; }
+            .navbar-container { gap: 0.4rem; }
+            .logo img { max-width: 19rem; max-height: 10rem; }
+
+            .mobile-menu-toggle { display: block; font-size: 1.3rem; }
+
+            .btn-contact-nav {
+                display: inline-flex;
+                width: auto;
+                margin-left: 7.2rem;
+                padding: 0.5rem 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .hero { padding: 1.9rem 1.5rem; min-height: auto; margin-top: 96px; }
+            .hero-content { grid-template-columns: 1fr; gap: 0.6rem; padding: 0 0.5rem; }
+            .hero-left h1 { font-size: 3.45rem; line-height: 1.1; margin-bottom: 0.7rem; }
+            .hero-left p { font-size: 1.4rem; margin-bottom: 0.7rem; }
+
+            .floating-card { padding: 1rem; max-width: 360px; box-shadow: none; }
+            .hero-image { max-width: 100%; height: auto; max-height: 220px; object-fit: cover; }
+
+            .info-cards, .how-we-work-grid, .testimonials-grid { grid-template-columns: 1fr; gap: 0.6rem; }
+            .work-card, .stat-card, .testimonial-card { box-shadow: none; }
+
+            .section-title { font-size: 1.1rem; }
+            .section-subtitle { font-size: 0.65rem; }
+        }
+
     </style>
 </head>
 <body>
@@ -1403,17 +1687,15 @@
             <div class="logo">
                 <img src="src/LOGO.png" alt="MMKS Logo">
             </div>
-            <button class="mobile-menu-toggle" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li><a href="services.html" class="nav-link">Services</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-               
             </ul>
             <a href="contact.html" class="btn-contact-nav">Contact Us</a>
-            
+            <button class="mobile-menu-toggle" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -1430,20 +1712,24 @@
                     <h3>Request a Call Back</h3>
                     <form class="contact-form" id="contact-form">
                         <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" placeholder="Your name" required>
+                            <label for="name">Name</label>
+                            <input id="name" type="text" placeholder="Your name" required>
                         </div>
                         <div class="form-group">
-                            <label>Last name</label>
-                            <input type="text" placeholder="Your last name" required>
+                            <label for="last-name">Last name</label>
+                            <input id="last-name" type="text" placeholder="Your last name" required>
                         </div>
                         <div class="form-group">
-                            <label>Your email*</label>
-                            <input type="email" placeholder="Your email address" required>
+                            <label for="email">Your email*</label>
+                            <input id="email" type="email" placeholder="Your email address" required>
                         </div>
                         <div class="form-group">
-                            <label>Message*</label>
-                            <textarea placeholder="Enter your message" required></textarea>
+                            <label for="phone">Phone</label>
+                            <input id="phone" type="text" placeholder="Your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message*</label>
+                            <textarea id="message" placeholder="Enter your message" required></textarea>
                         </div>
                         <button type="submit" class="btn-send">Send Message</button>
                     </form>
@@ -1465,6 +1751,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- ABOUT SECTION -->
@@ -1814,8 +2101,38 @@
         // Form submission
         document.getElementById('contact-form').addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! We will contact you soon.');
-            document.getElementById('contact-form').reset();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `Hello! I'm ${name}. ${message} You can reach me at ${email} or ${phone}`;
+            const whatsappUrl = `https://wa.me/918608717184?text=${encodeURIComponent(whatsappMessage)}`;
+
+            const emailData = new FormData();
+            emailData.append('email', email);
+            emailData.append('name', name);
+            emailData.append('phone', phone);
+            emailData.append('message', message);
+            emailData.append('_captcha', 'false');
+
+            fetch('https://formsubmit.co/ajax/mmksagency.official@gmail.com', {
+                method: 'POST',
+                body: emailData
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.open(whatsappUrl, '_blank');
+                alert('✅ Message sent via Email and WhatsApp! We will contact you soon. 📱');
+                document.getElementById('contact-form').reset();
+            })
+            .catch(error => {
+                console.error('Email send error:', error);
+                window.open(whatsappUrl, '_blank');
+                alert('✅ Message sent to WhatsApp! Email delivery is being processed. 📱');
+                document.getElementById('contact-form').reset();
+            });
         });
 
         // Accordion functionality

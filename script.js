@@ -62,12 +62,45 @@ window.addEventListener('load', () => {
         }
 
 const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you for your message! We will contact you soon.');
-        contactForm.reset();
+
+function handleSubmit(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    const whatsappMessage = `Hello! I'm ${name}. ${message} You can reach me at ${email} or ${phone}`;
+    const whatsappUrl = `https://wa.me/918608717184?text=${encodeURIComponent(whatsappMessage)}`;
+
+    const emailData = new FormData();
+    emailData.append('email', email);
+    emailData.append('name', name);
+    emailData.append('phone', phone);
+    emailData.append('message', message);
+    emailData.append('_captcha', 'false');
+
+    fetch('https://formsubmit.co/ajax/mmksagency.official@gmail.com', {
+        method: 'POST',
+        body: emailData
+    })
+    .then(response => response.json())
+    .then(data => {
+        window.open(whatsappUrl, '_blank');
+        alert('✅ Message sent via Email and WhatsApp! We will contact you soon. 📱');
+        e.target.reset();
+    })
+    .catch(error => {
+        console.error('Email send error:', error);
+        window.open(whatsappUrl, '_blank');
+        alert('✅ Message sent to WhatsApp! Email delivery is being processed. 📱');
+        e.target.reset();
     });
+}
+
+if (contactForm) {
+    contactForm.addEventListener('submit', handleSubmit);
 }
 
 // Pricing Modal Functionality
